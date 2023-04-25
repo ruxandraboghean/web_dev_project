@@ -1,0 +1,36 @@
+.movies_container {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap:2rem;
+
+    .movie_container {
+        flex: 1 1;
+        border: 1px solid gray;
+        border-radius:10px;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        .movie_image {
+            width: 7rem;
+            height: 5rem;
+            border-radius: 10px;
+        }
+
+        .movie_info {
+            
+            .movie_title {
+                font-size: 1rem;
+            }
+    
+            .movie_year {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
