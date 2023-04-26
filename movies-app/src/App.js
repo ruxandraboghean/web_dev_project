@@ -1,11 +1,12 @@
 import "./App.scss";
-import { Movies } from "./components/Movies";
+import { Search } from "./components/Search";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Movies />
+        <h2>Movies</h2>
+        <Search />
       </header>
     </div>
   );
