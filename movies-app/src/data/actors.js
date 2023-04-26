@@ -17,20 +17,17 @@ const fetchActors = async (movies, id) => {
         const movie = movies.find(movie => movie.id === id);
 
         if(movie) {
-            movie.actors = actors.forEach(actor => {
-                const actorMovies = actor.knownForTitles.split(",");
+          movie.actors = actors.forEach((actor) => {
+            const actorMovies = actor.knownForTitles.split(",");
 
-                actorMovies.forEach(title => {
-                  
-                    if(title === movie.id) {
-                        movie.actors = {...actor} || {};
-                    }
-                    return;
-                })
-            })
+            actorMovies.forEach((title) => {
+              if (title === movie.id) {
+                movie.actors = { ...actor } || {};
+              }
+              return;
+            });
+          });
         }
-
-        // return result.results;
     } catch (error) {
         console.error(error);
     }
