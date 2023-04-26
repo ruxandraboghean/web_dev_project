@@ -1,0 +1,19 @@
+.search_container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    .search_icon {
+        transform: rotate(90deg);
+    }
+
+    .search_input {
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        width: 30%;
+        float: left;
+    }
+}
