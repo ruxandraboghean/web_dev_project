@@ -1,4 +1,5 @@
 import fetchActors from "./actors";
+import addIntoCashe from "./addIntoCashe";
 import fetchRatings from "./ratings";
 
 const fetchMovies = async () => {
@@ -18,15 +19,17 @@ const fetchMovies = async () => {
 
     const movies = result.results;
 
-    for(const movie of movies) {
-      await fetchRatings(movies, movie.id)
+    for (const movie of movies) {
+      await fetchRatings(movies, movie.id);
+
+      // if (movie.ratings.averageRating > 8.0) {
+      //   movie.alert = "success";
+      // } else if (movie.ratings.averageRating < 5.0) {
+      //   movie.alert = "error";
+      // }
     }
 
-    for(const movie of movies) {
-      await fetchActors(movies, movie.id )
-    }
-
-    console.log(movies);
+    addIntoCashe("Movies", "http://localhost:3000", movies);
 
     return movies;
   } catch (error) {

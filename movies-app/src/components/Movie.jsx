@@ -5,15 +5,6 @@ import heart from "../images/heart-rate.png";
 
 export const Movie = ({ movie }) => {
   const [image, setImage] = useState("");
-  const [message, setMessage] = useState("");
-
-  function displayMessage() {
-    if(movie.ratings.averageRating > 8.0) {
-      setMessage("Watch this movie right now");
-    } else if(movie.ratings.averageRating < 5.0){
-      setMessage("Avoid this movie at all costs");
-    }
-  }
 
   useEffect(() => {
     if (movie.primaryImage) {
@@ -21,8 +12,6 @@ export const Movie = ({ movie }) => {
     } else {
       setImage(movie_default);
     }
-
-    displayMessage();
   });
 
   return (
@@ -32,15 +21,14 @@ export const Movie = ({ movie }) => {
         <h2 className="movie_title">Title: {movie.titleText.text}</h2>
         <p className="movie_year">Year: {movie.releaseYear.year}</p>
         <div className="movie_flex_item">
-        <p className="movie_rating">Rating: {movie.ratings.averageRating}</p>
+          <p className="movie_rating">Rating: {movie.ratings.averageRating}</p>
           <img src={star} alt="votes" className="movie_icon" />
         </div>
         <div className="movie_flex_item">
           <p className="movie_votes">Votes: {movie.ratings.numVotes}</p>
           <img src={heart} alt="votes" className="movie_icon" />
         </div>
-        <p className="movie_votes">Info: {message}</p>
-
+        <p className="movie_votes">Info:</p>
       </div>
     </div>
   );
