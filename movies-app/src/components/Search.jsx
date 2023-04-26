@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as IoIcons from "react-icons/io";
 import { Movies } from "./Movies";
-import fetchMovies from "../data/movies";
 import { EmptyData } from "./EmptyData";
+import getMoviesByRating from "../data/moviesOrderByRatings";
 
 export const Search = ({ movies }) => {
   const [searchedTitle, setSearchedTitle] = useState("");
@@ -33,9 +33,11 @@ export const Search = ({ movies }) => {
           onKeyDown={handleFilterData}
         />
       </div>
-      {filteredMovies ? <Movies movies={filteredMovies} /> : <EmptyData />}
-
-      {/* <AlertUser movie={movie} /> */}
+      {filteredMovies?.length ? (
+        <Movies movies={filteredMovies} />
+      ) : (
+        <EmptyData />
+      )}
     </>
   );
 };

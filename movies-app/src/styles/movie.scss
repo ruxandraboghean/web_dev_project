@@ -7,47 +7,72 @@
     justify-content: space-between;
     align-items: stretch;
     gap:2rem;
-
-    .movie_container {
-        flex: 1 1;
-        border: 1px solid gray;
-        border-radius:10px;
-        padding: 0.5rem 1rem;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 4rem;
-
-        .movie_image {
-            width: 15rem;
-            height: 10rem;
-            border-radius: 10px;
-        }
-
-        .movie_info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            
-            .movie_title {
-                font-size: 1rem;
-            }
     
-            .movie_year, .movie_rating, .movie_votes {
-                font-size: 0.9rem;
+    .movie_container {
+        @include flexbox(flex, row, space-between, flex-start);
+             border: 1px solid gray;
+            border-radius:10px;
+            padding: 0.5rem 1rem;
+            
+        .movie_container_info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+
+            .movie_image {
+                width: 15rem;
+                height: 10rem;
+                border-radius: 10px;
             }
 
-            .movie_flex_item {
-               @include flexbox(flex, row, center, center);
-               gap:1rem;
+            .movie_info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                
+                .movie_title {
+                    font-size: 1rem;
+                }
+        
+                .movie_year, .movie_rating, .movie_votes {
+                    font-size: 0.9rem;
+                }
 
-                .movie_icon{
-                    width: 1rem;
-                    height: 1rem;
+                .movie_flex_item {
+                @include flexbox(flex, row, center, center);
+                gap:1rem;
+
+                    .movie_icon{
+                        width: 1rem;
+                        height: 1rem;
+                    }
                 }
             }
+        }
+    }
 
+     .movie_recommended {
+        border: 1px solid green;
+        border-radius: 20px;
+        padding: 1rem;
+        font-size: 0.7rem;
+        color:green;
+    }
+
+    .movie_not_recommended {
+        border: 1px solid red;
+        border-radius: 20px;
+        padding: 0.7rem;
+        font-size: 0.7rem;
+        color:red;
+        float:right;
+
+        &:hover {
+            border: 1px solid rosybrown;
+            cursor: pointer;
+            color:rosybrown;
         }
     }
 }

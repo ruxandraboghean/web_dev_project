@@ -21,12 +21,6 @@ const fetchMovies = async () => {
 
     for (const movie of movies) {
       await fetchRatings(movies, movie.id);
-
-      // if (movie.ratings.averageRating > 8.0) {
-      //   movie.alert = "success";
-      // } else if (movie.ratings.averageRating < 5.0) {
-      //   movie.alert = "error";
-      // }
     }
 
     addIntoCashe("Movies", "http://localhost:3000", movies);
