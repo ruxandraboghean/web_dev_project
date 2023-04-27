@@ -1,8 +1,10 @@
+
+@import "./styles/_mixins.scss";
+@import "./styles/_colors.scss";
+@import "./styles/_fonts.scss";
+@import "./styles/empty_data.scss";
 @import "./styles/movie.scss";
 @import "./styles/search.scss";
-@import "./styles/_mixins.scss";
-@import "./styles/empty_data.scss";
-
 
 body {
   margin: 0;

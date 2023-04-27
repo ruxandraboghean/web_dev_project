@@ -1,5 +1,3 @@
-@import "./mixins.scss";
-
 .movies_container {
     width: 80%;
     display: flex;
@@ -10,10 +8,10 @@
     
     .movie_container {
         @include flexbox(flex, row, space-between, flex-start);
-             border: 1px solid gray;
+            border: 1px solid $purple-border-color;
             border-radius:10px;
             padding: 0.5rem 1rem;
-            
+            background-color: $movie-color;
         .movie_container_info {
             display: flex;
             justify-content: space-between;
@@ -24,6 +22,7 @@
                 width: 15rem;
                 height: 10rem;
                 border-radius: 10px;
+                border: 1px solid $black-border-color;
             }
 
             .movie_info {
@@ -31,18 +30,22 @@
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: flex-start;
+                color: $gray-blue-text;
                 
                 .movie_title {
-                    font-size: 1rem;
+                    font-size: $l;
+                    color: $dark-blue-text;
+                    font-family: $frank-ruhl-libre;
                 }
         
                 .movie_year, .movie_rating, .movie_votes {
-                    font-size: 0.9rem;
+                    font-size: $s;
+                    font-family: $roboto-mono;
                 }
 
                 .movie_flex_item {
-                @include flexbox(flex, row, center, center);
-                gap:1rem;
+                    @include flexbox(flex, row, center, center);
+                    gap:1rem;
 
                     .movie_icon{
                         width: 1rem;
