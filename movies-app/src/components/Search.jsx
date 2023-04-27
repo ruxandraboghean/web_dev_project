@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as IoIcons from "react-icons/io";
-import { Movies } from "./Movies";
+import { Series } from "./Series";
 import { EmptyData } from "./EmptyData";
-import getMoviesByRating from "../data/moviesOrderByRatings";
 
 export const Search = ({ movies }) => {
   const [searchedTitle, setSearchedTitle] = useState("");
@@ -10,7 +9,7 @@ export const Search = ({ movies }) => {
 
   const handleFilterData = () => {
     const newData = movies.filter((item) => {
-      return item.titleText.text
+      return item.jawSummary.title
         .toLowerCase()
         .includes(searchedTitle.toLowerCase());
     });
@@ -34,7 +33,7 @@ export const Search = ({ movies }) => {
         />
       </div>
       {filteredMovies?.length ? (
-        <Movies movies={filteredMovies} />
+        <Series movies={filteredMovies} />
       ) : (
         <EmptyData />
       )}
