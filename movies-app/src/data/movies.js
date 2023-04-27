@@ -1,4 +1,5 @@
 import fetchActors from "./actors";
+import addIntoCashe from "./addIntoCashe";
 import fetchRatings from "./ratings";
 
 const fetchMovies = async () => {
@@ -18,15 +19,11 @@ const fetchMovies = async () => {
 
     const movies = result.results;
 
-    for(const movie of movies) {
-      await fetchRatings(movies, movie.id)
+    for (const movie of movies) {
+      await fetchRatings(movies, movie.id);
     }
 
-    for(const movie of movies) {
-      await fetchActors(movies, movie.id )
-    }
-
-    console.log(movies);
+    addIntoCashe("Movies", "http://localhost:3000", movies);
 
     return movies;
   } catch (error) {
