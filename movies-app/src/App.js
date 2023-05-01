@@ -1,7 +1,11 @@
 import "./App.scss";
-import { Search } from "./components/Search";
 import React, { useEffect, useState } from "react";
-import fetchMovies from "./data/movies";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Home } from "./pages/Home";
+import { Series } from "./pages/Series";
+import { Movies } from "./pages/Movies";
+import fetchSeries from "./data/series";
 
 const cacheToFetch = {
   cacheName: "Movies",
@@ -29,7 +33,7 @@ function App() {
   };
 
   async function getMovies() {
-    const result = await fetchMovies();
+    const result = await fetchSeries();
 
     setMovies(result);
   }
@@ -43,13 +47,15 @@ function App() {
   }, []);
 
   console.log(movies, "movies");
-
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>Movies</h2>
-        <Search movies={movies} />
-      </header>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home data={movies} />} />
+          <Route path="/series" element={<Series data={movies} />} />
+          {/* <Route path="/movies" element={<Movies data={movies} />} /> */}
+        </Routes>
+      </Router>
     </div>
   );
 }

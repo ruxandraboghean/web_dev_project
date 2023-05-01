@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as IoIcons from "react-icons/io";
 import { Series } from "./Series";
 import { EmptyData } from "./EmptyData";
+import { SearchData } from "./SearchData";
 
 export const Search = ({ movies }) => {
   const [searchedTitle, setSearchedTitle] = useState("");
@@ -24,7 +25,7 @@ export const Search = ({ movies }) => {
         </label>
         <input
           type="text"
-          placeholder="search movie"
+          placeholder="search seria"
           onChange={(e) => setSearchedTitle(e.target.value)}
           value={searchedTitle}
           className="search_input"
@@ -32,7 +33,9 @@ export const Search = ({ movies }) => {
           onKeyDown={handleFilterData}
         />
       </div>
-      {filteredMovies?.length ? (
+      {searchedTitle === "" ? (
+        <SearchData data="seria" />
+      ) : filteredMovies?.length ? (
         <Series movies={filteredMovies} />
       ) : (
         <EmptyData />

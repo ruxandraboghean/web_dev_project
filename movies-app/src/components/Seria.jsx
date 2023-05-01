@@ -17,29 +17,40 @@ export const Seria = ({ movie }) => {
       movie.alert = "success";
     } else if (rating < 50) {
       movie.alert = "error";
+    } else {
+      movie.alert = "medium"
     }
   });
 
   return (
-    <div className="movie_container">
+    <div
+      className="movie_container"
+      style={{ backgroundImage: `url(${image})` }}
+    >
       <div className="movie_container_info">
-        <img src={image} alt="movieImage" className="movie_image" />
         <div className="movie_info">
-          <h2 className="movie_title">Title: {movie.jawSummary.title}</h2>
-          <p className="movie_year">Year: {movie.jawSummary.releaseYear}</p>
-          <p className="movie_synopsis">Year: {movie.jawSummary.synopsis}</p>
-
           <div className="movie_flex_item">
-            <p className="movie_rating">Rating: {rating}</p>
-            <img src={star} alt="votes" className="movie_icon" />
+            <div className="movie_label">
+              <p className="movie_rating">Rating: {rating}</p>
+              <img src={star} alt="votes" className="movie_icon" />
+            </div>
+
+            {movie.alert === "success" ? (
+              <p className="movie_recommended">recommended</p>
+            ) : movie.alert === "error" ? (
+              <p className="movie_not_recommended">not recommended</p>
+            ) : (
+              <p className="movie_medium">medium</p>
+            )}
+          </div>
+
+          <div className="movie_info_background">
+            <h2 className="movie_title">{movie.jawSummary.title}</h2>
+            <p className="movie_year">Year: {movie.jawSummary.releaseYear}</p>
+            <p className="movie_synopsis"> {movie.jawSummary.synopsis}</p>
           </div>
         </div>
       </div>
-      {movie.alert === "success" ? (
-        <p className="movie_recommended">recommended</p>
-      ) : (
-        <p className="movie_not_recommended">not recommended</p>
-      )}
     </div>
   );
 };

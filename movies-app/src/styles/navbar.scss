@@ -1,0 +1,38 @@
+.navbar_container {
+    @include flexbox(flex, column, flex-start, flex-start);
+    @include font($montserrat, normal, $s);
+    gap:2.5rem;
+    width: 100%;
+    height: 90vh;
+
+    .navbar_item{
+        width: 100%;
+        @include flexbox(flex, row, space-around, center);
+        text-decoration: none;
+        color:$light-color;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        box-sizing: border-box;
+        .cinema {
+            width: 2rem;
+            height:2rem;
+        }
+        #home {
+            height:1.75rem;
+            width: 1.75rem;
+        }
+
+        .navbar_item_child {
+            @include flexbox(flex, row, space-around, center);
+            height:2rem;
+
+            &:nth-child(even) {
+                align-self: flex-start;
+            }
+
+            &:hover {
+                color: $error-color;
+            }
+        }
+    }
+}

@@ -1,32 +1,32 @@
 @import "./index.scss";
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
   background-color: $primary-color;
   min-height: 100vh;
-  padding-top: 5rem;
+  min-width: 100%;
+  padding: 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: $title-color;
-
-
+  color: $light-color;
+  gap:6rem;
+  @include flexbox(flex, column, space-between, flex-start);
   &::-webkit-scrollbar { 
     display: none;
  }
+
+ .main_content {
+  @include flexbox(flex, row, space-between, flex-start);
+     min-height: 100vh;
+     width: 100%;
+     gap:6rem;
+
+  .main_container {
+    @include flexbox(flex, column, space-between, center);
+     width: 100%;
+     text-align: center;
+     font-size: calc(10px + 2vmin);
+     color: $light-color;
+   }
+ }
 }
+

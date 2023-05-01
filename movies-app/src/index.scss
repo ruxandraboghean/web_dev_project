@@ -1,10 +1,12 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 @import "./styles/_mixins.scss";
 @import "./styles/_colors.scss";
 @import "./styles/_fonts.scss";
 @import "./styles/empty_data.scss";
-@import "./styles/movie.scss";
+@import "./styles/movies.scss";
 @import "./styles/search.scss";
+@import "./styles/aside.scss";
+@import "./styles/navbar.scss";
 
 body {
   margin: 0;
