@@ -1,12 +1,12 @@
 import React from "react";
 import { Seria } from "./Seria";
 
-export const Series = ({ movies }) => {
+export const Series = ({ data }) => {
   return (
     <>
       <div className="movies_container">
-        {movies?.map((movie) => {
-          return <Seria movie={movie} key={movie.summary.id} />;
+        {data?.map((dataItem) => {
+          return <Seria dataItem={dataItem} key={dataItem.summary.id} />;
         })}
       </div>
     </>

@@ -1,4 +1,3 @@
-import fetchActors from "./actors";
 import addIntoCashe from "./addIntoCashe";
 import fetchRatings from "./ratings";
 
@@ -18,15 +17,15 @@ const fetchSeries = async () => {
     const response = await fetch(url, options);
     const result = await response.json();
 
-    const movies = result.titles;
+    const series = result.titles;
 
-    for (const movie of movies) {
-      await fetchRatings(movies, movie.summary.id);
+    for (const seria of series) {
+      await fetchRatings(series, seria.summary.id);
     }
 
-    addIntoCashe("Movies", "http://localhost:3000", movies);
+    addIntoCashe("Series", "http://localhost:3000/series", series);
 
-    return movies;
+    return series;
   } catch (error) {
     console.error(error);
     return [];

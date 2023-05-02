@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as IoIcons from "react-icons/io";
 import { Series } from "./Series";
 import { EmptyData } from "./EmptyData";
+import { SearchData } from "./SearchData";
 
-export const Search = ({ movies }) => {
+export const Search = ({ data }) => {
+  console.log(data, "data");
   const [searchedTitle, setSearchedTitle] = useState("");
-  const [filteredMovies, setFilteredMovies] = useState(movies);
+  const [filteredData, setFilteredData] = useState(data);
 
   const handleFilterData = () => {
-    const newData = movies.filter((item) => {
+    const newData = data.filter((item) => {
       return item.jawSummary.title
         .toLowerCase()
         .includes(searchedTitle.toLowerCase());
     });
-    setFilteredMovies(newData);
+    console.log(newData, "newData");
+    setFilteredData(newData);
+    console.log(filteredData, "filteredData");
   };
 
   return (
@@ -24,7 +28,7 @@ export const Search = ({ movies }) => {
         </label>
         <input
           type="text"
-          placeholder="search movie"
+          placeholder="search seria"
           onChange={(e) => setSearchedTitle(e.target.value)}
           value={searchedTitle}
           className="search_input"
@@ -32,8 +36,10 @@ export const Search = ({ movies }) => {
           onKeyDown={handleFilterData}
         />
       </div>
-      {filteredMovies?.length ? (
-        <Series movies={filteredMovies} />
+      {searchedTitle === "" ? (
+        <SearchData data="seria" />
+      ) : filteredData?.length ? (
+        <Series data={filteredData} />
       ) : (
         <EmptyData />
       )}
