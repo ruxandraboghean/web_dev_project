@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import * as IoIcons from "react-icons/io";
 import { Series } from "./Series";
-import { EmptyData } from "./EmptyData";
-import { SearchData } from "./SearchData";
+import { EmptyData } from "../EmptyData";
+import { SearchData } from "../SearchData";
 
-export const Search = ({ data }) => {
+export const SearchSeria = ({ data, type }) => {
   console.log(data, "data");
   const [searchedTitle, setSearchedTitle] = useState("");
   const [filteredData, setFilteredData] = useState(data);
@@ -37,11 +37,11 @@ export const Search = ({ data }) => {
         />
       </div>
       {searchedTitle === "" ? (
-        <SearchData data="seria" />
+        <SearchData type={type} />
       ) : filteredData?.length ? (
         <Series data={filteredData} />
       ) : (
-        <EmptyData />
+        <EmptyData type={type} />
       )}
     </>
   );

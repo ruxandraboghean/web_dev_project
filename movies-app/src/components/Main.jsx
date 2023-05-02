@@ -1,11 +1,19 @@
 import React from "react";
-import { Search } from "./Search";
+import { SearchSeria } from "./Series/SearchSeria";
+import { SearchMovie } from "./Movies/SearchMovie";
 
-export const Main = ({ data }) => {
+export const Main = ({ data, currentMenuItem }) => {
+  console.log(typeof currentMenuItem, "currentMenuItem");
   return (
     <div className="main_container">
-      <h2>Series</h2>
-      <Search data={data} />
+      <h2>
+        {currentMenuItem.charAt(0).toUpperCase() + currentMenuItem.slice(1)}
+      </h2>
+      {currentMenuItem === "series" ? (
+        <SearchSeria data={data} type="seria" />
+      ) : (
+        <SearchMovie data={data} type="movie" />
+      )}
     </div>
   );
 };

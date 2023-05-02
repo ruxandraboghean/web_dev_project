@@ -1,4 +1,4 @@
-import addIntoCashe from "./addIntoCashe";
+import addIntoCache from "./addIntoCache";
 import fetchRatings from "./ratings";
 
 const fetchSeries = async () => {
@@ -23,7 +23,7 @@ const fetchSeries = async () => {
       await fetchRatings(series, seria.summary.id);
     }
 
-    addIntoCashe("Series", "http://localhost:3000/series", series);
+    addIntoCache("Series", "http://localhost:3000/series", series);
 
     return series;
   } catch (error) {

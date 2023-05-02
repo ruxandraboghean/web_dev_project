@@ -1,13 +1,12 @@
 import React from "react";
 import { Movie } from "./Movie";
 
-export const Movies = ({movies}) => {
-
+export const Movies = ({ data }) => {
   return (
     <>
       <div className="movies_container">
-        {movies?.map((movie) => {
-          return <Movie movie={movie} key={movie.id} />;
+        {data?.map((dataItem) => {
+          return <Movie dataItem={dataItem} key={dataItem.id} />;
         })}
       </div>
     </>

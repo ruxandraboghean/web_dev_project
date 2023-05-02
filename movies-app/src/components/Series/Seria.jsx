@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import movie_default from "../images/movie_default.jpg";
-import star from "../images/star.png";
+import movie_default from "../../images/movie_default.jpg";
+import star from "../../images/star.png";
 
 export const Seria = ({ dataItem }) => {
   const [image, setImage] = useState("");

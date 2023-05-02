@@ -1,5 +1,5 @@
 //function to save data into cache memory
-const addIntoCashe = (cacheName, url, response) => {
+const addIntoCache = (cacheName, url, response) => {
   const data = new Response(JSON.stringify(response));
 
   if ("caches" in window) {
@@ -9,4 +9,4 @@ const addIntoCashe = (cacheName, url, response) => {
   }
 };
 
-export default addIntoCashe;
+export default addIntoCache;

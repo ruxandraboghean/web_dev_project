@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
-import { Series } from "./pages/Series";
-import { Movies } from "./pages/Movies";
 import fetchSeries from "./data/series";
 import fetchMovies from "./data/movies";
 
@@ -70,14 +68,22 @@ function App() {
     }
   }, []);
 
-  console.log(series, "series");
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home data={series} />} />
-          <Route path="/series" element={<Series data={series} />} />
-          {/* <Route path="/movies" element={<Movies data={movies} />} /> */}
+          <Route
+            path="/"
+            element={
+              <Home
+                series={series}
+                movies={movies}
+                // currentMenuItem={currentMenuItem}
+              />
+            }
+          />
+          {/* <Route path="/series" element={<Series data={series} />} />
+          <Route path="/movies" element={<Movies data={movies} />} /> */}
         </Routes>
       </Router>
     </div>
