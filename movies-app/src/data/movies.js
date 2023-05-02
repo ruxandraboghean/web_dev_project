@@ -23,7 +23,7 @@ const fetchMovies = async () => {
       await fetchRatings(movies, movie.id);
     }
 
-    addIntoCashe("Movies", "http://localhost:3000", movies);
+    addIntoCashe("Movies", "http://localhost:3000/movies", movies);
 
     return movies;
   } catch (error) {

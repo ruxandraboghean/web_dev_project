@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import movie_default from "../images/movie_default.jpg";
 import star from "../images/star.png";
 
-export const Seria = ({ movie }) => {
+export const Seria = ({ dataItem }) => {
   const [image, setImage] = useState("");
-  const imgURL = movie.jawSummary.backgroundImage.url.replace(/,/g, "");
-  const rating = movie.jawSummary.maturity.rating.maturityLevel;
+  const imgURL = dataItem.jawSummary.backgroundImage.url.replace(/,/g, "");
+  const rating = dataItem.jawSummary.maturity.rating.maturityLevel;
 
   useEffect(() => {
     if (imgURL) {
@@ -14,11 +14,11 @@ export const Seria = ({ movie }) => {
       setImage(movie_default);
     }
     if (rating > 80) {
-      movie.alert = "success";
+      dataItem.alert = "success";
     } else if (rating < 50) {
-      movie.alert = "error";
+      dataItem.alert = "error";
     } else {
-      movie.alert = "medium"
+      dataItem.alert = "medium";
     }
   });
 
@@ -35,9 +35,9 @@ export const Seria = ({ movie }) => {
               <img src={star} alt="votes" className="movie_icon" />
             </div>
 
-            {movie.alert === "success" ? (
+            {dataItem.alert === "success" ? (
               <p className="movie_recommended">recommended</p>
-            ) : movie.alert === "error" ? (
+            ) : dataItem.alert === "error" ? (
               <p className="movie_not_recommended">not recommended</p>
             ) : (
               <p className="movie_medium">medium</p>
@@ -45,9 +45,11 @@ export const Seria = ({ movie }) => {
           </div>
 
           <div className="movie_info_background">
-            <h2 className="movie_title">{movie.jawSummary.title}</h2>
-            <p className="movie_year">Year: {movie.jawSummary.releaseYear}</p>
-            <p className="movie_synopsis"> {movie.jawSummary.synopsis}</p>
+            <h2 className="movie_title">{dataItem.jawSummary.title}</h2>
+            <p className="movie_year">
+              Year: {dataItem.jawSummary.releaseYear}
+            </p>
+            <p className="movie_synopsis"> {dataItem.jawSummary.synopsis}</p>
           </div>
         </div>
       </div>

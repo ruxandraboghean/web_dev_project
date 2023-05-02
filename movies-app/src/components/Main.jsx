@@ -5,7 +5,7 @@ export const Main = ({ data }) => {
   return (
     <div className="main_container">
       <h2>Series</h2>
-      <Search movies={data} />
+      <Search data={data} />
     </div>
   );
 };

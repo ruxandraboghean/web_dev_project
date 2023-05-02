@@ -4,17 +4,20 @@ import { Series } from "./Series";
 import { EmptyData } from "./EmptyData";
 import { SearchData } from "./SearchData";
 
-export const Search = ({ movies }) => {
+export const Search = ({ data }) => {
+  console.log(data, "data");
   const [searchedTitle, setSearchedTitle] = useState("");
-  const [filteredMovies, setFilteredMovies] = useState(movies);
+  const [filteredData, setFilteredData] = useState(data);
 
   const handleFilterData = () => {
-    const newData = movies.filter((item) => {
+    const newData = data.filter((item) => {
       return item.jawSummary.title
         .toLowerCase()
         .includes(searchedTitle.toLowerCase());
     });
-    setFilteredMovies(newData);
+    console.log(newData, "newData");
+    setFilteredData(newData);
+    console.log(filteredData, "filteredData");
   };
 
   return (
@@ -35,8 +38,8 @@ export const Search = ({ movies }) => {
       </div>
       {searchedTitle === "" ? (
         <SearchData data="seria" />
-      ) : filteredMovies?.length ? (
-        <Series movies={filteredMovies} />
+      ) : filteredData?.length ? (
+        <Series data={filteredData} />
       ) : (
         <EmptyData />
       )}

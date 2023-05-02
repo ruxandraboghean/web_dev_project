@@ -6,15 +6,24 @@ import { Home } from "./pages/Home";
 import { Series } from "./pages/Series";
 import { Movies } from "./pages/Movies";
 import fetchSeries from "./data/series";
+import fetchMovies from "./data/movies";
 
-const cacheToFetch = {
-  cacheName: "Movies",
-  url: "http://localhost:3000",
-};
+const cachesToFetch = [
+  {
+    cacheName: "Movies",
+    url: "http://localhost:3000/movies",
+  },
+  {
+    cacheName: "Series",
+    url: "http://localhost:3000/series",
+  },
+];
 
 function App() {
   const [movies, setMovies] = useState(null);
+  const [series, setSeries] = useState(null);
 
+  //function to get data saved in cache memory
   const getSingleCacheData = async (cacheName, url) => {
     if (typeof caches === "undefined") return false;
 
@@ -23,36 +32,51 @@ function App() {
 
     // If no cache exists
     if (!cachedResponse || !cachedResponse.ok) {
-      setMovies(null);
+      cacheName === "Series" ? setSeries(null) : setMovies(null);
       return;
     }
 
     return cachedResponse.json().then((item) => {
-      setMovies(item);
+      cacheName === "Series" ? setSeries(item) : setMovies(item);
     });
   };
 
-  async function getMovies() {
+  //function to get series from the api
+  async function getSeries() {
     const result = await fetchSeries();
+
+    setSeries(result);
+  }
+
+  //function to get movies from the api
+  async function getMovies() {
+    const result = await fetchMovies();
 
     setMovies(result);
   }
 
+  //hook to load once series data from cache or api
   useEffect(() => {
-    getSingleCacheData(cacheToFetch.cacheName, cacheToFetch.url);
+    cachesToFetch.map((cacheToFetch) =>
+      getSingleCacheData(cacheToFetch.cacheName, cacheToFetch.url)
+    );
+
+    if (series === null) {
+      getSeries();
+    }
 
     if (movies === null) {
       getMovies();
     }
   }, []);
 
-  console.log(movies, "movies");
+  console.log(series, "series");
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home data={movies} />} />
-          <Route path="/series" element={<Series data={movies} />} />
+          <Route path="/" element={<Home data={series} />} />
+          <Route path="/series" element={<Series data={series} />} />
           {/* <Route path="/movies" element={<Movies data={movies} />} /> */}
         </Routes>
       </Router>
