@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import movie_default from "../../images/movie_default.jpg";
 import star from "../../images/star.png";
-import heart from "../../images/heart-rate.png";
-
-const styles = {
-  // backgroundImage: `url(${backgroundImage})`,
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-};
 
 export const Movie = ({ dataItem }) => {
   const [image, setImage] = useState("");
@@ -52,7 +45,6 @@ export const Movie = ({ dataItem }) => {
           <div className="movie_info_background">
             <h2 className="movie_title">{dataItem.titleText.text}</h2>
             <p className="movie_year">Year: {dataItem.releaseYear.year}</p>
-            {/* <p className="movie_synopsis"> {dataItem.jawSummary.synopsis}</p> */}
           </div>
         </div>
       </div>

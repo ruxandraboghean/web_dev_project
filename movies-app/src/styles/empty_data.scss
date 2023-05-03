@@ -6,12 +6,24 @@
     align-items: flex-end;
     gap: 1rem;
 
+    @include mobile() {
+        padding: 2.5rem 6rem; 
+    }
+
     p {
-        font-size: 1rem;
+        font-size: $m;
+        @include mobile() {
+            font-size: $xxs;
+        }
     }
 
     img {
         width: 5rem;
         height: 5rem;
+
+        @include mobile() {
+            height:2.5rem;
+            width: 2.5rem;
+        }
     }
 }

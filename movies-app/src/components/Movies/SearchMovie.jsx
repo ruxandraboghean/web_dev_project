@@ -28,7 +28,7 @@ export const SearchMovie = ({ data, type }) => {
         </label>
         <input
           type="text"
-          placeholder="search seria"
+          placeholder="search movie"
           onChange={(e) => setSearchedTitle(e.target.value)}
           value={searchedTitle}
           className="search_input"

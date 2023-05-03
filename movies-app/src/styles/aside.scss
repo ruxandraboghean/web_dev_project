@@ -1,7 +1,14 @@
 .aside_container {
     background-color: $secondary-color;
-    border-radius: 10px;
-    padding:  1rem 0.5rem;
-    position: fixed;
-    width: 10%;
+    border-radius: 0px 10px 10px 0;
+    padding: 1rem 0.5rem;
+    position: sticky;
+    top:0;
+    width: 150px;
+    height: 100vh;
+    box-sizing: border-box;
+
+    @include mobile() {
+        width: 50px;
+    }
 }

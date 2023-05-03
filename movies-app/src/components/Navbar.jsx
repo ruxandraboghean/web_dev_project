@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import cinema from "../images/cinema.png";
 import series from "../images/tv-show.png";
@@ -18,15 +18,9 @@ export const Navbar = ({ setCurrentMenuItem }) => {
           className=" navbar_item_child cinema"
           id="home"
         />
-        <span className="navbar_item_child">Home</span>
-      </Link>
-      <Link
-        to="/"
-        className="navbar_item"
-        onClick={() => setCurrentMenuItem("movies")}
-      >
-        <img src={cinema} alt="cinema" className="navbar_item_child cinema" />
-        <span className="navbar_item_child">Movies</span>
+        <span className="navbar_item_child" id="movie_span">
+          Home
+        </span>
       </Link>
       <Link
         to="/"
@@ -34,7 +28,19 @@ export const Navbar = ({ setCurrentMenuItem }) => {
         onClick={() => setCurrentMenuItem("series")}
       >
         <img src={series} alt="cinema" className="navbar_item_child cinema" />
-        <span className="navbar_item_child">Series</span>
+        <span className="navbar_item_child" id="movie_span">
+          Series
+        </span>
+      </Link>
+      <Link
+        to="/"
+        className="navbar_item"
+        onClick={() => setCurrentMenuItem("movies")}
+      >
+        <img src={cinema} alt="cinema" className="navbar_item_child cinema" />
+        <span className="navbar_item_child" id="movie_span">
+          Movies
+        </span>
       </Link>
     </nav>
   );
