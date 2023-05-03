@@ -1,11 +1,17 @@
 .movies_container {
-    width: 75%;
+    width: 100%;
     @include flexbox(flex, column, space-between, center);
     gap:2rem;
     font-family: $montserrat;
+    box-sizing: border-box;
+
+    @include mobile() {
+        width: 100%;
+    }
     
     .movie_container {
         @include flexbox(flex, row, space-between, flex-start);
+      
             border: 1px solid $purple-border-color;
             border-radius:20px;
             width: 80%;
@@ -16,9 +22,11 @@
         .movie_container_info {
             gap: 4rem;
             min-width: 100%;
-            margin-right: 30rem;
             height: 20rem;
 
+            @include mobile() {
+                height: 10rem;
+            }
             .movie_image {
                 width: 15rem;
                 height: 10rem;
@@ -31,7 +39,7 @@
                 min-width: 100%;
                 height: 100%;
                 @include flexbox(flex, column, space-between, center);
-
+               
 
                 .movie_info_background {
                     min-width: 100%;
@@ -46,16 +54,28 @@
                         color: $error-color;
                         margin: 0;
                         padding-top: 1rem;
+
+                        @include mobile() {
+                            font-size: $m;
+                        }
                     }
                 }
                 
                 .movie_year, .movie_rating, .movie_votes {
                     font-size: $s;
+
+                    @include mobile() {
+                        font-size:$xs_mobile;
+                    }
                 }
 
                 .movie_synopsis {
                     padding: 0.5rem 1rem;
                     font-size: $s;
+
+                    @include mobile() {
+                        font-size:$xxs_mobile;
+                    }
                 }
 
                 .movie_flex_item {
@@ -69,6 +89,13 @@
                         background-color: rgb(0, 0, 0, 0.6);
                         border-radius: 20px;
                         padding: 0 0.75rem;
+
+                        .movie_rating {
+                            @include mobile() {
+                                font-size:$xxs_mobile;
+                                padding: 0;
+                            }
+                        }
                     }
 
                     .movie_icon{
@@ -80,12 +107,17 @@
         }
     }
 
-     .movie_recommended {
+     .movie_recommended, .movie_not_recommended, .movie_medium  {
         border: 1px solid $success-color;
+        background-color:$success-color;
         border-radius: 10px;
         padding: 0.5rem;
-        font-size: 0.7rem;
-        background-color:$success-color;
+        font-size: $xxs;
+
+        @include mobile() {
+            font-size:$xxs_mobile;
+            padding: 0.25rem;
+        }
             
         &:hover {
             cursor: pointer;
@@ -96,32 +128,20 @@
 
     .movie_not_recommended {
         border: 1px solid $error-color;
-        border-radius: 10px;
-        padding: 0.5rem;
-        font-size: 0.7rem;
-        font-weight: 600;
         color:$light-color;
         background-color: $error-color;
 
         &:hover {
-            border: 1px solid rosybrown;
-            cursor: pointer;
-            background-color:transparent;
             color:rosybrown;
         }
     }
 
     .movie_medium {
         border: 1px solid $light-color;
-        border-radius: 10px;
-        padding: 0.5rem;
-        font-size: 0.7rem;
-        font-weight: 600;
         color:$light-color;
+        background-color: $active-color;
 
         &:hover {
-            border: 1px solid rosybrown;
-            cursor: pointer;
             color:rosybrown;
         }
     }

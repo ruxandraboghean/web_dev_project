@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
-import movie_default from "../images/movie_default.jpg";
-import star from "../images/star.png";
+import movie_default from "../../images/movie_default.jpg";
+import star from "../../images/star.png";
 
-export const Seria = ({ dataItem }) => {
+export const Movie = ({ dataItem }) => {
   const [image, setImage] = useState("");
-  const imgURL = dataItem.jawSummary.backgroundImage.url.replace(/,/g, "");
-  const rating = dataItem.jawSummary.maturity.rating.maturityLevel;
 
   useEffect(() => {
-    if (imgURL) {
-      setImage(imgURL);
+    if (dataItem.primaryImage) {
+      setImage(dataItem.primaryImage?.url);
     } else {
       setImage(movie_default);
     }
-    if (rating > 80) {
+    if (dataItem.ratings.averageRating > 8.0) {
       dataItem.alert = "success";
-    } else if (rating < 50) {
+    } else if (dataItem.ratings.averageRating < 5.0) {
       dataItem.alert = "error";
-    } else {
-      dataItem.alert = "medium";
     }
   });
 
@@ -31,7 +27,9 @@ export const Seria = ({ dataItem }) => {
         <div className="movie_info">
           <div className="movie_flex_item">
             <div className="movie_label">
-              <p className="movie_rating">Rating: {rating}</p>
+              <p className="movie_rating">
+                Rating: {dataItem.ratings?.numVotes}
+              </p>
               <img src={star} alt="votes" className="movie_icon" />
             </div>
 
@@ -45,11 +43,8 @@ export const Seria = ({ dataItem }) => {
           </div>
 
           <div className="movie_info_background">
-            <h2 className="movie_title">{dataItem.jawSummary.title}</h2>
-            <p className="movie_year">
-              Year: {dataItem.jawSummary.releaseYear}
-            </p>
-            <p className="movie_synopsis"> {dataItem.jawSummary.synopsis}</p>
+            <h2 className="movie_title">{dataItem.titleText.text}</h2>
+            <p className="movie_year">Year: {dataItem.releaseYear.year}</p>
           </div>
         </div>
       </div>

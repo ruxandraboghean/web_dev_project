@@ -1,5 +1,4 @@
-import fetchActors from "./actors";
-import addIntoCashe from "./addIntoCashe";
+import addIntoCache from "./addIntoCache";
 import fetchRatings from "./ratings";
 
 const fetchMovies = async () => {
@@ -23,7 +22,7 @@ const fetchMovies = async () => {
       await fetchRatings(movies, movie.id);
     }
 
-    addIntoCashe("Movies", "http://localhost:3000/movies", movies);
+    addIntoCache("Movies", "http://localhost:3000/movies", movies);
 
     return movies;
   } catch (error) {

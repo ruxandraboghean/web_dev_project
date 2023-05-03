@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import * as IoIcons from "react-icons/io";
-import { Series } from "./Series";
-import { EmptyData } from "./EmptyData";
-import { SearchData } from "./SearchData";
+import { EmptyData } from "../EmptyData";
+import { SearchData } from "../SearchData";
+import { Movies } from "./Movies";
 
-export const Search = ({ data }) => {
+export const SearchMovie = ({ data, type }) => {
   console.log(data, "data");
   const [searchedTitle, setSearchedTitle] = useState("");
   const [filteredData, setFilteredData] = useState(data);
 
   const handleFilterData = () => {
     const newData = data.filter((item) => {
-      return item.jawSummary.title
+      return item.titleText.text
         .toLowerCase()
         .includes(searchedTitle.toLowerCase());
     });
@@ -28,7 +28,7 @@ export const Search = ({ data }) => {
         </label>
         <input
           type="text"
-          placeholder="search seria"
+          placeholder="search movie"
           onChange={(e) => setSearchedTitle(e.target.value)}
           value={searchedTitle}
           className="search_input"
@@ -37,11 +37,11 @@ export const Search = ({ data }) => {
         />
       </div>
       {searchedTitle === "" ? (
-        <SearchData data="seria" />
+        <SearchData type={type} />
       ) : filteredData?.length ? (
-        <Series data={filteredData} />
+        <Movies data={filteredData} />
       ) : (
-        <EmptyData />
+        <EmptyData type={type} />
       )}
     </>
   );
