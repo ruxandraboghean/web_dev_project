@@ -17,8 +17,8 @@ export const Seria = ({ dataItem }) => {
       dataItem.alert = "success";
     } else if (rating < 50) {
       dataItem.alert = "error";
-    } else {
-      dataItem.alert = "medium";
+    } else if(rating > 50 && rating < 80){
+      dataItem.alert = "average";
     }
   });
 
@@ -39,8 +39,10 @@ export const Seria = ({ dataItem }) => {
               <p className="movie_recommended">recommended</p>
             ) : dataItem.alert === "error" ? (
               <p className="movie_not_recommended">not recommended</p>
+            ) : dataItem.alert === "average" ? (
+              <p className="movie_average">average</p>
             ) : (
-              <p className="movie_medium">medium</p>
+              <p></p>
             )}
           </div>
 

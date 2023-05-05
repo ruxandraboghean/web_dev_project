@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import fetchSeries from "./data/series";
 import fetchMovies from "./data/movies";
+import getLocalStorage from "./data/getLocalStorage";
 
 const cachesToFetch = [
   {
@@ -17,27 +18,11 @@ const cachesToFetch = [
   },
 ];
 
+const localStorageKeys = ["movies", "series"];
+
 function App() {
   const [movies, setMovies] = useState(null);
   const [series, setSeries] = useState(null);
-
-  //function to get data saved in cache memory
-  const getSingleCacheData = async (cacheName, url) => {
-    if (typeof caches === "undefined") return false;
-
-    const cacheStorage = await caches.open(cacheName);
-    const cachedResponse = await cacheStorage.match(url);
-
-    // If no cache exists
-    if (!cachedResponse || !cachedResponse.ok) {
-      cacheName === "Series" ? setSeries(null) : setMovies(null);
-      return;
-    }
-
-    return cachedResponse.json().then((item) => {
-      cacheName === "Series" ? setSeries(item) : setMovies(item);
-    });
-  };
 
   //function to get series from the api
   async function getSeries() {
@@ -55,9 +40,17 @@ function App() {
 
   //hook to load once series data from cache or api
   useEffect(() => {
-    cachesToFetch.map((cacheToFetch) =>
-      getSingleCacheData(cacheToFetch.cacheName, cacheToFetch.url)
-    );
+    localStorageKeys.map((key) => {
+      const data = getLocalStorage(key);
+      console.log(data, "data FROM LS");
+
+      if (key === "movies") {
+        setMovies(data);
+      }
+      if (key === "series") {
+        setSeries(data);
+      }
+    });
 
     if (series === null) {
       getSeries();
@@ -72,18 +65,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                series={series}
-                movies={movies}
-                // currentMenuItem={currentMenuItem}
-              />
-            }
-          />
-          {/* <Route path="/series" element={<Series data={series} />} />
-          <Route path="/movies" element={<Movies data={movies} />} /> */}
+          <Route path="/" element={<Home series={series} movies={movies} />} />
         </Routes>
       </Router>
     </div>

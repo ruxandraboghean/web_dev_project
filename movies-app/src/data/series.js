@@ -1,4 +1,4 @@
-import addIntoCache from "./addIntoCache";
+import setLocalStorage from "./setLocalStorage";
 import fetchRatings from "./ratings";
 
 const fetchSeries = async () => {
@@ -23,7 +23,7 @@ const fetchSeries = async () => {
       await fetchRatings(series, seria.summary.id);
     }
 
-    addIntoCache("Series", "http://localhost:3000/series", series);
+    setLocalStorage("series", series);
 
     return series;
   } catch (error) {
