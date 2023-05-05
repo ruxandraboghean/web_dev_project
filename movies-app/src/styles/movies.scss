@@ -107,7 +107,7 @@
         }
     }
 
-     .movie_recommended, .movie_not_recommended, .movie_medium  {
+     .movie_recommended, .movie_not_recommended, .movie_average {
         border: 1px solid $success-color;
         background-color:$success-color;
         border-radius: 10px;
@@ -136,7 +136,7 @@
         }
     }
 
-    .movie_medium {
+    .movie_average {
         border: 1px solid $light-color;
         color:$light-color;
         background-color: $active-color;

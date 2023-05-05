@@ -15,6 +15,11 @@ export const Movie = ({ dataItem }) => {
       dataItem.alert = "success";
     } else if (dataItem.ratings.averageRating < 5.0) {
       dataItem.alert = "error";
+    } else if (
+      dataItem.ratings.averageRating > 5.0 &&
+      dataItem.ratings.averageRating < 8.0
+    ) {
+      dataItem.alert = "average";
     }
   });
 
@@ -37,8 +42,10 @@ export const Movie = ({ dataItem }) => {
               <p className="movie_recommended">recommended</p>
             ) : dataItem.alert === "error" ? (
               <p className="movie_not_recommended">not recommended</p>
+            ) : dataItem.alert === "average" ? (
+              <p className="movie_average">average</p>
             ) : (
-              <p className="movie_medium">medium</p>
+              <p></p>
             )}
           </div>
 
