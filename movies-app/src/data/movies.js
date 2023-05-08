@@ -1,6 +1,9 @@
 import setLocalStorage from "./setLocalStorage";
 import fetchRatings from "./ratings";
 
+
+//Andreea - functie de preluare a datelor despre filme din api 
+
 const fetchMovies = async () => {
   const url = "https://moviesdatabase.p.rapidapi.com/titles";
   const options = {

@@ -4,6 +4,8 @@ import { EmptyData } from "../EmptyData";
 import { SearchData } from "../SearchData";
 import { Movies } from "./Movies";
 
+//Andreea - cautare film
+
 export const SearchMovie = ({ data, type }) => {
   console.log(data, "data");
   const [searchedTitle, setSearchedTitle] = useState("");

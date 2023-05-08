@@ -1,6 +1,8 @@
 import React from "react";
 import { Seria } from "./Seria";
 
+//Ruxandra - afisarea serialelor
+
 export const Series = ({ data }) => {
   return (
     <>

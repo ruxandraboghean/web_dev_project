@@ -1,3 +1,5 @@
+// Ruxandra
+
 .movies_container {
     width: 100%;
     @include flexbox(flex, column, space-between, center);
@@ -44,11 +46,22 @@
                 .movie_info_background {
                     min-width: 100%;
                     background-color: rgb(0, 0, 0, 0.7);
-                    border-radius: 20px 20px 0px 0px;
+                    border-radius: 20px 20px 18px 18px;
                     box-sizing: border-box;
 
                     @include flexbox(flex, column, center, center);
 
+                    .movie_span {
+                        color:$error-color;
+
+                        @include mobile() {
+                            font-size: $xxs_mobile;
+                        }
+                        @include tablet() {
+                            font-size: $xs_mobile;
+                        }
+                    }
+                  
                     .movie_title {
                         font-size: $xxl;
                         color: $error-color;
@@ -56,7 +69,72 @@
                         padding-top: 1rem;
 
                         @include mobile() {
+                            font-size: $s;
+                        }
+                        
+                        @include tablet() {
                             font-size: $m;
+                        }
+                    }
+                    .movie_categories{
+                        @include flexbox(flex, row, center, center);
+                        gap:1rem;
+
+                        .movie_recommended {
+                            background-color: $purple-border-color;
+                            border-color: $active-color;
+                            font-size: $xxs;
+
+                            &:hover {
+                                color:$dark-blue-text;
+                            background-color: $movie-color;
+
+                            }
+                            @include mobile() {
+                                font-size: $xxs_mobile;
+                            }
+                            @include tablet() {
+                                font-size: $xs_mobile;
+                            }
+                        }
+                    }
+
+                    .arrow_icon{
+                        @include mobile() {
+                            width: 1rem;
+                            height: 1rem;
+                        }
+                        width: 2rem;
+                        height: 2rem;
+
+                        &:hover {
+                            color: $error-color;
+                            cursor: pointer;
+                        }
+                    }
+                
+                    .movie_cast {
+                        @include flexbox(flex, column, center, center);
+
+                        .movie_cast_container {
+                            @include flexbox(flex, row, center, center);
+                            gap:2rem;
+
+                            .movie_cast_items {
+                                @include flexbox(flex, column, center, flex-start);
+
+                                @include mobile() {
+                                    font-size: $xxs_mobile;
+                                }
+                                @include tablet() {
+                                    font-size: $xs_mobile;
+                                }
+                                font-size: $xs;
+                                p {
+                                    margin: 0;
+                                    padding: 0.15rem;
+                                }
+                            }
                         }
                     }
                 }
@@ -75,6 +153,9 @@
 
                     @include mobile() {
                         font-size:$xxs_mobile;
+                    }
+                    @include tablet() {
+                        font-size:$xs_mobile;
                     }
                 }
 

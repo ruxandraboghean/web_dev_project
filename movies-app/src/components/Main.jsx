@@ -2,6 +2,8 @@ import React from "react";
 import { SearchSeria } from "./Series/SearchSeria";
 import { SearchMovie } from "./Movies/SearchMovie";
 
+//Ruxandra - componenta principala care transmite date despre meniul selectat spre realizare cautare
+
 export const Main = ({ data, currentMenuItem }) => {
   console.log(typeof currentMenuItem, "currentMenuItem");
   return (

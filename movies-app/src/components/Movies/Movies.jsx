@@ -1,6 +1,8 @@
 import React from "react";
 import { Movie } from "./Movie";
 
+// Andreea - afisarea filme
+
 export const Movies = ({ data }) => {
   return (
     <>

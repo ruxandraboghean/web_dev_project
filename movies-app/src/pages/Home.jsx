@@ -3,6 +3,8 @@ import { Aside } from "../components/Aside";
 import { Main } from "../components/Main";
 import { HomeComponent } from "../components/HomeComponent";
 
+//Ruxandra - componenta principala a aplicatiei
+
 export const Home = ({ series, movies }) => {
   const [currentMenuItem, setCurrentMenuItem] = useState("");
 

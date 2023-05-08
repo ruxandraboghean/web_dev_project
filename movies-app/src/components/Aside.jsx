@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar } from "./Navbar";
 
-export const Aside = ({ setCurrentMenuItem }) => {
+// Andreea - componenta care integreaza meniul de navigare
+
+export const Aside = ({ setCurrentMenuItem, currentMenuItem }) => {
   return (
     <aside className="aside_container">
-      <Navbar setCurrentMenuItem={setCurrentMenuItem} />
+      <Navbar
+        setCurrentMenuItem={setCurrentMenuItem}
+        currentMenuItem={currentMenuItem}
+      />
     </aside>
   );
 };
