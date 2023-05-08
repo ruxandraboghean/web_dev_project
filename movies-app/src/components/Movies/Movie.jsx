@@ -33,12 +33,14 @@ export const Movie = ({ dataItem }) => {
       <div className="movie_container_info">
         <div className="movie_info">
           <div className="movie_flex_item">
-            <div className="movie_label">
-              <p className="movie_rating">
-                Rating: {dataItem.ratings?.numVotes}
-              </p>
-              <img src={star} alt="votes" className="movie_icon" />
-            </div>
+            {dataItem.ratings.numVotes && (
+              <div className="movie_label">
+                <p className="movie_rating">
+                  Rating: {dataItem.ratings?.numVotes}
+                </p>
+                <img src={star} alt="votes" className="movie_icon" />
+              </div>
+            )}
 
             {dataItem.alert === "success" ? (
               <p className="movie_recommended">recommended</p>

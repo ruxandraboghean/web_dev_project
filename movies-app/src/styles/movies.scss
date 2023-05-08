@@ -79,7 +79,9 @@
                     .movie_categories{
                         @include flexbox(flex, row, center, center);
                         gap:1rem;
-
+                        @include mobile() {
+                            font-size: $xxs_mobile;
+                        }
                         .movie_recommended {
                             background-color: $purple-border-color;
                             border-color: $active-color;
@@ -90,12 +92,15 @@
                             background-color: $movie-color;
 
                             }
-                            @include mobile() {
-                                font-size: $xxs_mobile;
-                            }
                             @include tablet() {
                                 font-size: $xs_mobile;
                             }
+                            @include mobile() {
+                                font-size: 0.3rem;
+                                margin: 0;
+
+                            }
+                          
                         }
                     }
 

@@ -10,7 +10,10 @@ export const Home = ({ series, movies }) => {
 
   return (
     <div className="main_content">
-      <Aside setCurrentMenuItem={setCurrentMenuItem} />
+      <Aside
+        setCurrentMenuItem={setCurrentMenuItem}
+        currentMenuItem={currentMenuItem}
+      />
       {currentMenuItem === "movies" ? (
         <Main data={movies} currentMenuItem={currentMenuItem} />
       ) : currentMenuItem === "series" ? (
