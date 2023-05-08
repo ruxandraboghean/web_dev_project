@@ -1,3 +1,5 @@
+//Ruxandra - preluare date din local storage
+
 const getLocalStorage = (key) => {
   const value = localStorage.getItem(key);
 

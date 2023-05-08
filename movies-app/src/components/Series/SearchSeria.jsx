@@ -4,6 +4,8 @@ import { Series } from "./Series";
 import { EmptyData } from "../EmptyData";
 import { SearchData } from "../SearchData";
 
+//Ruxandra - cautare serial
+
 export const SearchSeria = ({ data, type }) => {
   console.log(data, "data");
   const [searchedTitle, setSearchedTitle] = useState("");

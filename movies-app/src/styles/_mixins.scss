@@ -1,3 +1,5 @@
+// Andreea - definire mixinuri
+
 @mixin mobile {
     @media screen and (max-width: 468px) {
         @content;

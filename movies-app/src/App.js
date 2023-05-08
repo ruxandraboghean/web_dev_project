@@ -7,17 +7,6 @@ import fetchSeries from "./data/series";
 import fetchMovies from "./data/movies";
 import getLocalStorage from "./data/getLocalStorage";
 
-const cachesToFetch = [
-  {
-    cacheName: "Movies",
-    url: "http://localhost:3000/movies",
-  },
-  {
-    cacheName: "Series",
-    url: "http://localhost:3000/series",
-  },
-];
-
 const localStorageKeys = ["movies", "series"];
 
 function App() {
@@ -38,11 +27,10 @@ function App() {
     setMovies(result);
   }
 
-  //hook to load once series data from cache or api
+  //hook to load once series data from local storage or api
   useEffect(() => {
     localStorageKeys.map((key) => {
       const data = getLocalStorage(key);
-      console.log(data, "data FROM LS");
 
       if (key === "movies") {
         setMovies(data);

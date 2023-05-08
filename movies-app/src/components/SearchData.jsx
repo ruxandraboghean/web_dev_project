@@ -1,6 +1,8 @@
 import React from "react";
 import movie from "../images/movie-reel.png";
 
+// Andreea - componenta afisata la inceputul cautarii unei productii
+
 export const SearchData = ({ type }) => {
   return (
     <>

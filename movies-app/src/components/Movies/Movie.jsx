@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import movie_default from "../../images/movie_default.jpg";
 import star from "../../images/star.png";
 
+// Andreea - afisarea film
+
 export const Movie = ({ dataItem }) => {
   const [image, setImage] = useState("");
 
