@@ -23,7 +23,7 @@ export const Movie = ({ dataItem }) => {
     ) {
       dataItem.alert = "average";
     }
-  });
+  }, [dataItem]);
 
   return (
     <div

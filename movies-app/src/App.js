@@ -33,11 +33,12 @@ function App() {
       const data = getLocalStorage(key);
 
       if (key === "movies") {
-        setMovies(data);
+        return setMovies(data);
       }
       if (key === "series") {
-        setSeries(data);
+        return setSeries(data);
       }
+      return;
     });
 
     if (series === null) {
@@ -47,7 +48,7 @@ function App() {
     if (movies === null) {
       getMovies();
     }
-  }, []);
+  }, [series, movies]);
 
   return (
     <div className="App">
