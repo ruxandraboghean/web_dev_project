@@ -33,12 +33,12 @@ function App() {
       const data = getLocalStorage(key);
 
       if (key === "movies") {
-        return setMovies(data);
+        setMovies(data);
+      } else if (key === "series") {
+        setSeries(data);
       }
-      if (key === "series") {
-        return setSeries(data);
-      }
-      return;
+
+      return null;
     });
 
     if (series === null) {

@@ -31,7 +31,7 @@ export const Seria = ({ dataItem }) => {
     } else if (rating > 50 && rating < 80) {
       dataItem.alert = "average";
     }
-  });
+  }, [imgURL, rating, dataItem]);
 
   return (
     <div
